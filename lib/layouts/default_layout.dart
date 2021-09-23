@@ -9,8 +9,10 @@ import 'package:flutter_responsive/services/navigation_service.dart';
 class DefaultLayout extends StatelessWidget {
   final PreferredSizeWidget? appBar;
   final Widget? body;
+  final String? pageName;
 
-  const DefaultLayout({Key? key, this.appBar, this.body}) : super(key: key);
+  const DefaultLayout({Key? key, this.appBar, this.body, this.pageName})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +27,34 @@ class DefaultLayout extends StatelessWidget {
       } else {
         return Scaffold(
           body: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                   width: 220,
                   decoration: BoxDecoration(color: AppColors.backgroundColor),
                   child: const MenuLeft()),
-              Expanded(child: body ?? const SizedBox())
+              Expanded(
+                  child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    pageName != null
+                        ? Padding(
+                            padding: const EdgeInsets.only(
+                                left: 24, right: 24, top: 16),
+                            child: Text(
+                              pageName!,
+                              style: textPageTitle(context),
+                            ),
+                          )
+                        : const SizedBox(),
+                    Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: body ?? const SizedBox())
+                  ],
+                ),
+              ))
             ],
           ),
         );
@@ -56,14 +80,19 @@ class MenuLeft extends StatelessWidget {
           ],
         )),
         UIHelper.customSeparator(),
-        SizedBox(
-          height: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text("Nguyễn Văn A", style: textBoldLight(context)),
-              const Icon(Icons.logout, color: Colors.white)
-            ],
+        InkWell(
+          onTap: () {
+            NavigationService().pushNamed(loginRoute);
+          },
+          child: SizedBox(
+            height: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text("Nguyễn Văn A", style: textBoldLight(context)),
+                const Icon(Icons.logout, color: Colors.white)
+              ],
+            ),
           ),
         )
       ],
@@ -75,7 +104,7 @@ Widget _menuItem(
     BuildContext context, IconData iconData, String text, String routerName) {
   return ListTile(
     onTap: () {
-      NavigationService().pushNamed(homeRoute);
+      NavigationService().pushNamed(routerName);
     },
     leading: Icon(iconData, color: Colors.white),
     title: Text(text, style: textLight(context)),

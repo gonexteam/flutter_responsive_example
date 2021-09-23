@@ -24,3 +24,10 @@ TextStyle textBoldLight(BuildContext context) => Theme.of(context)
     .textTheme
     .bodyText1!
     .copyWith(fontWeight: FontWeight.bold, color: Colors.white);
+TextStyle textPageTitle(BuildContext context) => Theme.of(context)
+    .textTheme.headline5!
+    .copyWith(fontWeight: FontWeight.bold);
+
+TextStyle textCardTitle(BuildContext context) => Theme.of(context)
+    .textTheme.bodyText1!
+    .copyWith(fontWeight: FontWeight.bold, fontSize: 18);
