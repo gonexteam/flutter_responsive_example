@@ -4,8 +4,6 @@ import 'package:flutter_responsive/routing/router.dart';
 import 'package:flutter_responsive/routing/router_names.dart';
 import 'package:flutter_responsive/services/navigation_service.dart';
 
-import 'layouts/default_layout.dart';
-
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle());
   runApp(const MyApp());
