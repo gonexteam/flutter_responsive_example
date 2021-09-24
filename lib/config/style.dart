@@ -14,20 +14,23 @@ ButtonStyle primaryOutlineButton = OutlinedButton.styleFrom(
 
 TextStyle textBold(BuildContext context) => Theme.of(context)
     .textTheme
-    .bodyText1!
+    .bodyText2!
     .copyWith(fontWeight: FontWeight.bold);
-TextStyle textLight(BuildContext context) => Theme.of(context)
-    .textTheme
-    .bodyText1!
-    .copyWith(color: Colors.white);
+
+TextStyle textLight(BuildContext context) =>
+    Theme.of(context).textTheme.bodyText2!.copyWith(color: Colors.white);
+
 TextStyle textBoldLight(BuildContext context) => Theme.of(context)
     .textTheme
-    .bodyText1!
+    .bodyText2!
     .copyWith(fontWeight: FontWeight.bold, color: Colors.white);
+
 TextStyle textPageTitle(BuildContext context) => Theme.of(context)
-    .textTheme.headline5!
+    .textTheme
+    .headline5!
     .copyWith(fontWeight: FontWeight.bold);
 
 TextStyle textCardTitle(BuildContext context) => Theme.of(context)
-    .textTheme.bodyText1!
+    .textTheme
+    .bodyText1!
     .copyWith(fontWeight: FontWeight.bold, fontSize: 18);

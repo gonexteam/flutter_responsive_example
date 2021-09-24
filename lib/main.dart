@@ -4,6 +4,8 @@ import 'package:flutter_responsive/routing/router.dart';
 import 'package:flutter_responsive/routing/router_names.dart';
 import 'package:flutter_responsive/services/navigation_service.dart';
 
+import 'helpers/scale_helper.dart';
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle());
   runApp(const MyApp());
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       navigatorKey: NavigationService.navigationKey,
       onGenerateRoute: generateRoute,
-      initialRoute: loginRoute,
+      initialRoute: scaleRoute,
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_responsive/routing/router_names.dart';
 import 'package:flutter_responsive/ui/about/about_page.dart';
 import 'package:flutter_responsive/ui/auth/login/login_page.dart';
 import 'package:flutter_responsive/ui/home/home_page.dart';
+import 'package:flutter_responsive/ui/scale/scale_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -12,6 +13,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(const AboutPage(), settings);
     case loginRoute:
       return _getPageRoute(const LoginPage(), settings);
+    case scaleRoute:
+      return _getPageRoute(const ScalePage(), settings);
     default:
       return _getPageRoute(const HomePage(), settings);
   }
